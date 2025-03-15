@@ -23,5 +23,5 @@ yarn-error.log
 /.zed
 
 
-./docker/mysql
-./docker/nginx/logs
+./docker/mysql/*
+./docker/nginx/logs/*
