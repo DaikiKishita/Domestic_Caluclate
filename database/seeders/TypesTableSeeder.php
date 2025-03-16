@@ -21,8 +21,8 @@ class TypesTableSeeder extends Seeder
             ['name' => 'その他'],
         ];
 
-        $params->each(function ($param) {
+        foreach ($params as $param) {
             DB::table('types')->insert($param);
-        });
+        }
     }
 }
