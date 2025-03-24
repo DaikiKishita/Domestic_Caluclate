@@ -21,13 +21,6 @@
 </style>
 </head>
 <body>
-    <!-- ヘッダー -->
-    @include('components.header')
-
-    <!-- コンテンツ部分 -->
-    @yield('content')
-
-    <!-- フッター -->
-    @include('components.footer')
+    @yield('layout')
 </body>
 </html>
