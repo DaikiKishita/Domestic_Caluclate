@@ -2,7 +2,7 @@
 @section('content')
 <div class="d-flex flex-column justify-content-center align-items-center bg-dark-subtle py-2">
     <h4>新規登録</h4>
-    <form method="POST" action="/user/create">
+    <form method="POST" action="/user/store">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">ユーザー名</label>
@@ -25,6 +25,9 @@
             <button type="submit" class="btn btn-primary" id = "submit_button">新規登録</button>
         </div>
     </form>
+    <div class="text-center mt-3">
+        <a href="/login">ログインはこちら</a>
+    </div>
 </div>
 <script>
     let confirmation_password = document.getElementById('password_confirmation');
