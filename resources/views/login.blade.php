@@ -1,8 +1,8 @@
-@extends('layouts.layout')
+@extends('layouts.home_layout')
 @section('content')
 <div class = "d-flex flex-column justify-content-center align-items-center bg-dark-subtle py-4">
     <h4>ログイン</h4>
-    <form method="POST" action="/">
+    <form method="POST" action="/user/login">
         @csrf
         <div class="mb-3">
             <label for="email" class="form-label">メールアドレス</label>
@@ -19,10 +19,9 @@
         <div class="text-center">
             <button type="submit" class="btn btn-primary">ログイン</button>
         </div>
-
-        <div class = "text-center mt-3">
-            <a href="/register">新規登録はこちら</a>
-        </div>
     </form>
+    <div class = "text-center mt-3">
+        <a href="/register">新規登録はこちら</a>
+    </div>
 </div>
 @endsection
