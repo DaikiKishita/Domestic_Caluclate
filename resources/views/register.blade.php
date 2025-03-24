@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.home_layout')
 @section('content')
 <div class="d-flex flex-column justify-content-center align-items-center bg-dark-subtle py-2">
     <h4>新規登録</h4>

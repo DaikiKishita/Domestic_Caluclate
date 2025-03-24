@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@sextion('layout')
+@section('layout')
     @include('components.home_header')
 
     <!-- コンテンツ部分 -->
