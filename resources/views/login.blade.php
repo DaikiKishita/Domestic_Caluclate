@@ -26,7 +26,7 @@
         </div>
     </form>
     <div class = "text-center mt-3">
-        <a href="/register">新規登録はこちら</a>
+        <a href="/user/register">新規登録はこちら</a>
     </div>
 </div>
 @endsection
