@@ -16,7 +16,7 @@ Route::get('/login',function(){
 
 Route::post('/user/logout',[UserController::class,'logout']);
 
-Route::get('/register',function(){
+Route::get('/user/register',function(){
     return view('register');
 });
 
