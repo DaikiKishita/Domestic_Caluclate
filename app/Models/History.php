@@ -12,7 +12,7 @@ class History extends Model
         'purpose',
         'value',
         'type_id',
-    ]
+    ];
 
     public function type(){
         return $this->belongsTo(Type::class);
