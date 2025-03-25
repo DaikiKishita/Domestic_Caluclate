@@ -1,5 +1,10 @@
 @extends('layouts.home_layout')
 @section('content')
+@if (isset($status))
+    <div class = 'd-flex justify-content-center align-items-center'>
+        <p>{{$status}}</p>
+    </div>
+@endif
 <div class = "d-flex flex-column justify-content-center align-items-center bg-dark-subtle py-4">
     <h4>ログイン</h4>
     <form method="POST" action="/user/login">
