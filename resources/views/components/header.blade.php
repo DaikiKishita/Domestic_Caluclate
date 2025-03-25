@@ -6,9 +6,12 @@
         <h1>家計簿アプリ DC</h1>
     </div>
 
-    <div>
-        @if (session('is_login'))
-            <a href="/logout" class = "text-white">ログアウト</a>
+    <div class = "d-flex justify-content-center align-items-center">
+        @if ($is_login)
+            <form action = "/user/logout" method="post">
+                @csrf
+                <button type="submit" class="btn btn-outline-light">ログアウト</button>
+            </form>
         @endif
     </div>
 </header>
