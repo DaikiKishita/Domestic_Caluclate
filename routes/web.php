@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HistoryController;
 
 
 Route::get('/', function () {
@@ -20,3 +21,5 @@ Route::get('/register',function(){
 Route::post('/user/store',[UserController::class,'store']);
 
 Route::post('/user/login',[UserController::class,'login']);
+
+Route::get('/history',[HistoryController::class,'index']);
