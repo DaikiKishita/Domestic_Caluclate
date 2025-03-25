@@ -18,3 +18,5 @@ Route::get('/register',function(){
 });
 
 Route::post('/user/store',[UserController::class,'store']);
+
+Route::post('/user/login',[UserController::class,'login']);
