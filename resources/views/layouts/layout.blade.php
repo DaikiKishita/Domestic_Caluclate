@@ -1,10 +1,10 @@
 @extends('layouts.base')
 @section('layout')
-    @include('components.home_header')
+    @include('components.header')
 
     <!-- コンテンツ部分 -->
     @yield('content')
 
     <!-- フッター -->
-    @include('components.home_footer')
+    @include('components.footer')
 @endsection

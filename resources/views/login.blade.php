@@ -1,11 +1,11 @@
-@extends('layouts.home_layout')
+@extends('layouts.layout')
 @section('content')
-@if (isset($status))
-    <div class = 'd-flex justify-content-center align-items-center'>
-        <p>{{$status}}</p>
-    </div>
-@endif
 <div class = "d-flex flex-column justify-content-center align-items-center bg-dark-subtle py-4">
+    @if (session('status'))
+        <div class = 'd-flex justify-content-center align-items-center'>
+            <p class="text-danger">{{session('status')}}</p>
+        </div>
+@endif
     <h4>ログイン</h4>
     <form method="POST" action="/user/login">
         @csrf
