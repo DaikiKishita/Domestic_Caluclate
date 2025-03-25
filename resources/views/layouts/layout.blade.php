@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('layout')
-    @include('components.header')
+    @include('components.header', ['is_login' => $is_login])
 
     <!-- コンテンツ部分 -->
     @yield('content')
