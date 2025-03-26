@@ -7,7 +7,7 @@
     </div>
 
     <div class = "d-flex justify-content-center align-items-center">
-        @if ($is_login)
+        @if (isset($is_login))
             <form action = "/user/logout" method="post">
                 @csrf
                 <button type="submit" class="btn btn-outline-light">ログアウト</button>
