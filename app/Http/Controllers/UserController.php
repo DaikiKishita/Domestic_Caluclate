@@ -34,4 +34,11 @@ class UserController extends Controller
             return redirect('/login')->with('status','メールかパスワードが間違っています');
         }
     }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
+    }
 }
