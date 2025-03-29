@@ -16,6 +16,11 @@
     </form>
 </div>
 
+@if ($histories->isEmpty())
+    <div class = "text-center">
+        <h4>履歴がありません</h4>
+    </div>
+@else
 <div class = "text-center">
     <div class="d-flex justify-content-between">
     <div></div>
@@ -45,6 +50,7 @@
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $history->id }}">
                                 <button type="submit" class="btn btn-danger">削除</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -52,7 +58,7 @@
         </table>
     </div>
 </div>
-
+@endif
 <!-- 履歴登録モーダル -->
 <div class ="offcanvas offcanvas-end" id = "historyStore" aria-labelledby="historyStoreLabel" aria-hidden="true" tabindex="-1">
     <div class="offcanvas-dialog">
@@ -88,4 +94,5 @@
         </div>
     </div>
 </div>
+
 @endsection
