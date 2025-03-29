@@ -58,6 +58,9 @@
         </table>
     </div>
 </div>
+<div class = "d-flex justify-content-center">
+    {{ $histories->links() }}
+</div>
 @endif
 <!-- 履歴登録モーダル -->
 <div class ="offcanvas offcanvas-end" id = "historyStore" aria-labelledby="historyStoreLabel" aria-hidden="true" tabindex="-1">
