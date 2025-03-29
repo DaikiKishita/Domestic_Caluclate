@@ -24,16 +24,15 @@ class HistoryController extends Controller
         ->orderBy('created_at','desc')
         ->paginate(5);
 
-        $types = Type::all();
-
         $current_month_total = History::whereMonth('created_at', Carbon::now()->month)
                     ->whereYear('created_at', Carbon::now()->year)
                     ->sum('amount');
 
         return view('history',
         [
+            'user_name' => $user->name,
             'histories'=>$histories,
-            'types'=>$types,
+            'types'=>Type::all(),
             'is_login'=>true,
             'current_month_total'=>$current_month_total,
         ]);
