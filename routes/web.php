@@ -29,3 +29,7 @@ Route::get('/history',[HistoryController::class,'index']);
 Route::post('/history/store',[HistoryController::class,'store']);
 
 Route::post('/history/search',[HistoryController::class,'search']);
+
+Route::get('/history/search',[HistoryController::class,'index']);
+
+Route::post('/history/destroy',[HistoryController::class,'destroy']);
