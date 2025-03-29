@@ -22,7 +22,7 @@ class HistoryController extends Controller
         $histories = History::where('user_id',$user->id)
         ->with('type')
         ->orderBy('created_at','desc')
-        ->get();
+        ->paginate(5);
 
         $types = Type::all();
 
@@ -84,7 +84,7 @@ class HistoryController extends Controller
         ->with('type')
         ->where('type_id',$request->type)
         ->orderBy('created_at','desc')
-        ->get();
+        ->paginate(5);
 
         $total_amount = History::where('user_id',$user->id)
         ->where('type_id',$request->type)
