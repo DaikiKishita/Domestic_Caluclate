@@ -12,14 +12,14 @@ class History extends Model
         'purpose',
         'value',
         'type_id',
-    ]
+    ];
 
     public function type(){
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Type::class,'type_id');
     }
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     protected function casts(): array

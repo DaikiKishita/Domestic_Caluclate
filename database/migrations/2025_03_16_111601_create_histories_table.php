@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('purpose');
+            $table->string('comment')->nullable();
             $table->foreignId('type_id');
-            $table->integer('value');
+            $table->integer('amount');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
