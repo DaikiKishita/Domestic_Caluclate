@@ -25,3 +25,5 @@ Route::post('/user/store',[UserController::class,'store']);
 Route::post('/user/login',[UserController::class,'login']);
 
 Route::get('/history',[HistoryController::class,'index']);
+
+Route::post('/history/store',[HistoryController::class,'store']);
