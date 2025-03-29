@@ -3,42 +3,49 @@
 <div class="d-flex justify-content-end my-2">
     <form action = "/history/search" method= "post" class ="d-flex mx-3">
         @csrf
-        <select name = "types" class = "mx-1">
-            <option value = "">全て</option>
+        <select name = "type" class = "mx-1">
             @foreach ($types as $type)
                 <option value = "{{ $type->id }}">{{ $type->name }}</option>
             @endforeach
         </select>
-        <input type="date" name="date" class="form-control mx-1"> 
-        ~
-        <input type="date" name="date" class="form-control mx-1"> 
-        <button type="submit" class="btn btn-primary mx-auto px-auto" style="width: 50%">検索</button>
+        <button type="submit" class="btn btn-primary mx-1">検索</button>
     </form>
     <form action = "/history/store" method= "post">
         @csrf
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#historyStore">新規作成</button>
+        <button type="button" class="btn btn-primary mx-2" data-bs-toggle="offcanvas" data-bs-target="#historyStore">新規作成</button>
     </form>
 </div>
 
 <div class = "text-center">
-    <h4>履歴</h4>
+    <div class="d-flex justify-content-between">
+    <div></div>
+    <div><h4>履歴</h4></div>
+    <div class="d-flex mx-2"><h4 class = "">今月の合計金額:{{$current_month_total}}円</h4></div>
+    </div>  
     <div class = "px-2">
-        <table class = "table table-secondary table-hover table-bordered border border-dark">
+        <table class = "table table-hover table-border border border-dark">
             <thead>
                 <tr>
-                    <th scope="col">日付</th>
                     <th scope="col">用途</th>
                     <th scope="col">カテゴリ</th>
                     <th scope="col">金額</th>
+                    <th scope="col">日付</th>
+                    <th scope="col">削除</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($histories as $history)
                     <tr>
-                        <td scope='row'>{{ $history->created_at }}</td>
                         <td scope='row'>{{ $history->comment }}</td>
                         <td scope='row'>{{ $history->type->name}}</td>
-                        <td scope='row'>{{ $history->amount }}</td>
+                        <td scope='row'>{{ $history->amount }}円</td>
+                        <td scope='row'>{{ $history->created_at }}</td>
+                        <td scope="row">
+                            <form action="/history/destroy" method="POST">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $history->id }}">
+                                <button type="submit" class="btn btn-danger">削除</button>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -47,14 +54,14 @@
 </div>
 
 <!-- 履歴登録モーダル -->
-<div class ="modal fade" id = "historyStore" aria-labelledby="historyStoreLabel" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="historyStoreLabel">履歴登録</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class ="offcanvas offcanvas-end" id = "historyStore" aria-labelledby="historyStoreLabel" aria-hidden="true" tabindex="-1">
+    <div class="offcanvas-dialog">
+        <div class="offcanvas-content">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="historyStoreLabel">履歴登録</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="offcanvas-body">
                 <form method="POST" action="/history/store">
                     @csrf
                     <div class="mb-3">
@@ -81,5 +88,4 @@
         </div>
     </div>
 </div>
-
 @endsection
