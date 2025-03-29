@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\History;
 use App\Models\Type;
 
+use Carbon\Carbon;
+
 class HistoryController extends Controller
 {
     //
@@ -24,11 +26,16 @@ class HistoryController extends Controller
 
         $types = Type::all();
 
+        $current_month_total = History::whereMonth('created_at', Carbon::now()->month)
+                    ->whereYear('created_at', Carbon::now()->year)
+                    ->sum('amount');
+
         return view('history',
         [
             'histories'=>$histories,
             'types'=>$types,
             'is_login'=>true,
+            'current_month_total'=>$current_month_total,
         ]);
     }
 
@@ -50,5 +57,29 @@ class HistoryController extends Controller
         $history->save();
 
         return redirect('/history');
+    }
+
+    public function search(Request $request){
+        $user = Auth::user();
+
+        $histories = History::where('user_id',$user->id)
+        ->with('type')
+        ->where('type_id',$request->type)
+        ->orderBy('created_at','desc')
+        ->get();
+
+        $total_amount = History::where('user_id',$user->id)
+        ->where('type_id',$request->type)
+        ->whereMonth('created_at', Carbon::now()->month)
+        ->whereYear('created_at', Carbon::now()->year)
+        ->sum('amount');
+
+        return view('history',
+        [
+            'histories'=>$histories,
+            'types'=>Type::all(),
+            'is_login'=>true,
+            'current_month_total'=>$total_amount,
+        ]);
     }
 }
