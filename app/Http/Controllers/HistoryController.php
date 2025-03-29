@@ -59,6 +59,24 @@ class HistoryController extends Controller
         return redirect('/history');
     }
 
+    public function destroy(Request $request){
+        $user = Auth::user();
+        
+        $request->validate([
+            'id' => 'required|integer',
+        ]);
+
+        $history = History::where('user_id',$user->id)
+        ->where('id',$request->input('id'))
+        ->first();
+
+        if ($history) {
+            $history->delete();
+        }
+
+        return redirect('/history');
+    }
+
     public function search(Request $request){
         $user = Auth::user();
 
