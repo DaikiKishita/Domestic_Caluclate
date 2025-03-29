@@ -16,6 +16,9 @@ class TypesTableSeeder extends Seeder
         $params =[
             ['name' => '医療系'],
             ['name' => '食費系'],
+            ['name' => '雑多系'],
+            ['name' => '衣服系'],
+            ['name' => '美容系'],
             ['name' => '交通系'],
             ['name' => '交際系'],
             ['name' => '趣味系'],
