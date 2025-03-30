@@ -14,7 +14,7 @@ services:
   app:
     container_name: "app"
     build:
-      context: ./docker/phps
+      context: ./docker/php
     depends_on:
       - mysql
     volumes:
