@@ -93,6 +93,7 @@ class HistoryController extends Controller
 
         return view('history',
         [
+            'user_name' => $user->name,
             'histories'=>$histories,
             'types'=>Type::all(),
             'is_login'=>true,
